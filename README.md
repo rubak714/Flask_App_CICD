@@ -52,7 +52,7 @@ project-root/
 
 ### 1. Clone the Repo
 ```bash
-git clone https://github.com/<your-username>/flask-cicd-pipeline.git
+git clone https://github.com/<one's-username>/flask-cicd-pipeline.git
 cd flask-cicd-pipeline
 ```
 
@@ -138,77 +138,22 @@ pipeline {
 
 ```
 
-### 5. Push Your Code to GitHub
+### 5. Push the Code to GitHub
 Make sure to write a clean, human-readable commit history.
 
 ---
 
 # How to Run the Flask App (Dockerized)
 
-## What To Do Next in Ubuntu (Run Your Jenkins + Docker Project)
+### What To Do Next in Ubuntu (Run Jenkins + Docker Project)
 
-Now that your project is uploaded to GitHub and your system has Docker and Jenkins installed, follow these steps to run and test everything locally:
+Now that the project is uploaded to GitHub and ubuntu system has Docker and Jenkins installed, follow these steps to run and test everything locally:
 
-## 1. Clone Your GitHub Repo (If not already done)
-
-```bash
-cd ~
-git clone https://github.com/<your-username>/flask-cicd-pipeline.git
-cd flask-cicd-pipeline
-```
-
-## 2. (Optional) Test Flask App Without Docker
-
-Make sure the app works standalone:
-
-```bash
-cd app
-pip install -r requirements.txt
-python app.py
-```
-Note: Your requirements.txt file should be kept inside the root/ directory, as that's where your Dockerfile and Jenkinsfile are configured to look for it when copying and installing dependencies.
-
-Then visit [http://localhost:5000](http://localhost:5000) to confirm it runs. Use CTRL+C to stop the Flask app.
-
-## 3. Build Docker Image
-
-From the root directory:
-
-```bash
-docker build -t flask-cicd-app .
-```
-
-## 4. Run Docker Container
-
-```bash
-docker run -d -p 5000:5000 --name flask_app flask-cicd-app
-```
-
-Visit: [http://localhost:5000](http://localhost:5000)
-
-To stop the container:
-
-```bash
-docker stop flask_app
-```
-
-To remove it:
-
-```bash
-docker rm flask_app
-```
-
-# How to Run the Flask App (Dockerized)
-
-## What To Do Next in Ubuntu (Run Your Jenkins + Docker Project)
-
-Now that your project is uploaded to GitHub and your system has Docker and Jenkins installed, follow these steps to run and test everything locally:
-
-## 1. Clone Your GitHub Repo (If not already done)
+## 1. Clone GitHub Repo (If not already done)
 
 ```bash
 cd ~
-git clone https://github.com/<your-username>/flask-cicd-pipeline.git
+git clone https://github.com/<one's-username>/flask-cicd-pipeline.git
 cd flask-cicd-pipeline
 ```
 
@@ -224,7 +169,7 @@ python app.py
 
 Then visit [http://localhost:5000](http://localhost:5000) to confirm it runs. Use CTRL+C to stop the Flask app.
 
-**Note:** Your `requirements.txt` file should be kept inside the `app/` directory, as that's where your `Dockerfile` and `Jenkinsfile` are configured to look for it when copying and installing dependencies.
+**Note:** `requirements.txt` file should be kept inside the `app/` directory, as that's where the `Dockerfile` and `Jenkinsfile` are configured to look for it when copying and installing dependencies.
 
 ## 3. Build Docker Image
 
@@ -279,7 +224,7 @@ mkdir ~/jenkins-docker && cd ~/jenkins-docker
 nano Dockerfile
 ```
 
-Paste the following into your Dockerfile:
+Paste the following into the Dockerfile:
 
 ```Dockerfile
 FROM jenkins/jenkins:lts
@@ -295,7 +240,7 @@ RUN apt-get update && \
 USER jenkins
 ```
 
-To find your host Docker group ID (GID):
+To find uder's host Docker group ID (GID):
 
 ```bash
 getent group docker
@@ -354,13 +299,13 @@ exit
 docker exec -it jenkins docker version
 ```
 
-You should now see Docker Client and Server versions with no permission errors.
+User should now see Docker Client and Server versions with no permission errors.
 
 ---
 
-## 6. Restarting Jenkins After Reboot (If You Had Jenkins Before)
+## 6. Restarting Jenkins After Reboot (If User Had Jenkins Before)
 
-If you already installed Jenkins previously (e.g., yesterday), and you've restarted Ubuntu:
+If user already installed Jenkins previously (yesterday), and user has restarted Ubuntu:
 
 ### a. First, ensure Docker is running (usually starts automatically)
 
@@ -386,7 +331,7 @@ Now Jenkins should be live again at:
 http://localhost:8080
 ```
 
-And the Flask app (if you run its container) will be at:
+And the Flask app (if user runs its container) will be at:
 
 ```
 http://localhost:5000
@@ -397,14 +342,14 @@ http://localhost:5000
 
 1. Open Jenkins in browser: [http://localhost:8080](http://localhost:8080)
 2. Click on "New Item"
-3. Enter a name for your job, select "Pipeline", and click OK
+3. Enter a name for one's job, select "Pipeline", and click OK
 4. Scroll down to the **Pipeline** section
 5. Under **Definition**, choose `Pipeline script from SCM`
 6. For **SCM**, select `Git`
-7. In the **Repository URL** field, enter your GitHub repo URL:
+7. In the **Repository URL** field, enter user's GitHub repo URL:
 
    ```
-   https://github.com/<your-username>/flask-cicd-pipeline.git
+   https://github.com/<one's-username>/flask-cicd-pipeline.git
    ```
 8. Leave credentials blank if the repo is public, or add credentials if it's private
 9. Under **Branch Specifier**, enter:
@@ -420,24 +365,24 @@ This will:
 * Clone your GitHub repository
 * Read the Jenkinsfile
 * Build the Docker image
-* Run your Flask container automatically
+* Run Flask container automatically
 
 ---
 
 ## Done!
 
-Your CI/CD pipeline is now working locally using Docker and Jenkins.
+The CI/CD pipeline is now working locally using Docker and Jenkins.
 
 ---
 
-You should see:
+User should see:
 > "Hello from Flask + Jenkins Pipeline!"
 
 ---
 
 ## 8. Reboot Recovery Quick Commands
 
-When starting your system next time (after reboot), run the following to restore both apps:
+When starting user's system next time (after reboot), run the following to restore both apps:
 
 ```bash
 # Start Docker daemon (if needed)
@@ -458,7 +403,7 @@ Then open in browser:
 # Jenkins + Docker: Full Debugging & Fix Guide
 
 This guide documents the **complete troubleshooting journey** to fix the `docker: permission denied` error when using Docker inside a Jenkins container.
-It includes explanations of why each step was necessary — so you not only fix the problem, but **understand it deeply**.
+It includes explanations of why each step was necessary — so user not only fixes the problem, but **understands it deeply**.
 
 ---
 
@@ -483,7 +428,7 @@ permission denied while trying to connect to the Docker daemon socket
 
 ### Why `docker` must be **mounted** into Jenkins:
 
-Docker runs as a **daemon (background service)** on your host machine. Containers, including Jenkins, are isolated and **cannot see the Docker daemon unless you explicitly share access**.
+Docker runs as a **daemon (background service)** on user's host machine. Containers, including Jenkins, are isolated and **cannot see the Docker daemon unless user explicitly shares access**.
 
 So, this line is essential:
 
@@ -513,9 +458,9 @@ So we created a custom image that:
 
 ## Find Host Docker Group ID (GID)
 
-### Step 1: Get your host Docker GID
+### Step 1: Get user's host Docker GID
 
-From your **host terminal** (not inside a container):
+From user's **host terminal** (not inside a container):
 
 ```bash
 getent group docker
@@ -555,7 +500,7 @@ USER jenkins
 ```bash
 cd ~/jenkins-docker
 
-# Replace 982 with your actual GID if different
+# Replace 982 with user's actual GID if different
 docker build -t my-jenkins-docker .
 ```
 
@@ -630,7 +575,7 @@ docker restart jenkins
 docker exec -it jenkins docker version
 ```
 
-You should now see both **Client** and **Server** Docker version outputs with **no permission errors**.
+User should now see both **Client** and **Server** Docker version outputs with **no permission errors**.
 
 ---
 
@@ -656,13 +601,8 @@ id jenkins
 
 ---
 
-## Credits
-
-This is a real-world working solution — documented to help you not just fix Jenkins + Docker issues, but also understand **why they happen**.
-
-
-## Why This Project Matters for DevOps Jobs
-- Shows you understand **CI/CD automation**
+## Why This Project Matters for DevOps domain
+- Shows one understands **CI/CD automation**
 - Demonstrates use of **Docker and Jenkins** (core tools in DevOps)
 - Real, working example of **pipeline as code**
 - Good base for expansion: testing, logging, monitoring, Kubernetes
