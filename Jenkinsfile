@@ -9,19 +9,26 @@ pipeline {
   stages {
     stage('Build Docker Image') {
       steps {
-        sh "docker build -t $IMAGE_NAME ."
+        script {
+          sh 'docker version' // 👈 Ensure Docker CLI is accessible
+          sh "docker build -t $IMAGE_NAME ."
+        }
       }
     }
 
     stage('Stop Existing Container') {
       steps {
-        sh "docker rm -f $CONTAINER_NAME || true"
+        script {
+          sh "docker ps -q --filter name=$CONTAINER_NAME | grep -q . && docker rm -f $CONTAINER_NAME || true"
+        }
       }
     }
 
     stage('Run Docker Container') {
       steps {
-        sh "docker run -d -p 5000:5000 --name $CONTAINER_NAME $IMAGE_NAME"
+        script {
+          sh "docker run -d -p 5000:5000 --name $CONTAINER_NAME $IMAGE_NAME"
+        }
       }
     }
   }
