@@ -145,7 +145,7 @@ Make sure to write a clean, human-readable commit history.
 
 # How to Run the Flask App (Dockerized)
 
-### What To Do Next in Ubuntu (Run Jenkins + Docker Project)
+### What To Do Next in Ubuntu
 
 Now that the project is uploaded to GitHub and ubuntu system has Docker and Jenkins installed, follow these steps to run and test everything locally:
 
@@ -203,7 +203,7 @@ docker rm flask_app
 
 If Jenkins is not installed, follow these steps to set it up using Docker:
 
-## Why We Create a Custom Jenkins Docker Image
+### Why We Create a Custom Jenkins Docker Image
 
 By default, the official **jenkins/jenkins:lts** Docker image does not include the Docker CLI. This means commands like docker build and docker run will not work inside a Jenkins pipeline.
 
