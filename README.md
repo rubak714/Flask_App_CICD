@@ -187,6 +187,13 @@ docker run -d -p 5000:5000 --name flask_app flask-cicd-app
 
 Visit: [http://localhost:5000](http://localhost:5000)
 
+---
+
+User should see:
+> "Hello from Flask + Jenkins Pipeline!"
+
+---
+
 To stop the container:
 
 ```bash
@@ -372,11 +379,6 @@ This will:
 ## Done!
 
 The CI/CD pipeline is now working locally using Docker and Jenkins.
-
----
-
-User should see:
-> "Hello from Flask + Jenkins Pipeline!"
 
 ---
 
