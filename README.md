@@ -626,4 +626,4 @@ This is a personal portfolio project created as part of my journey toward becomi
 
 ---
 
-> *Built from scratch, with a lot of curiosity and a clear goal: becoming a DevOps Engineer who automates everything but never stops learning.*
+> *Built from scratch with gpt4, with a lot of curiosity and a clear goal: becoming a DevOps Engineer who automates everything but never stops learning.*
