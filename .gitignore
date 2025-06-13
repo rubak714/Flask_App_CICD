@@ -1,0 +1,31 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environment files
+.env
+.venv/
+venv/
+env/
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# Jenkins
+*.jenkins*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# VS Code / IDEs
+.vscode/
+.idea/
+
+# Testing & coverage
+htmlcov/
+coverage.xml
+.cache
+.pytest_cache/
